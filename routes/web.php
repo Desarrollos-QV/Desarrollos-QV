@@ -40,3 +40,18 @@ Route::get('clients', [HomeController::class, 'clients'])->name('clients');
 |--------- -------------------------------------
 */
 Route::get('contact', [HomeController::class, 'contact'])->name('contact');
+
+/*
+|-----------------------------------------------
+| Send To Wahtsapp
+|--------- -------------------------------------
+*/
+Route::get('chatin-whatsapp', [HomeController::class, 'chatinWhatsapp'])->name('chatinWhatsapp');
+
+
+/*
+|-----------------------------------------------
+| Newsletter
+|--------- -------------------------------------
+*/
+Route::post('newsletter', [HomeController::class, 'newsletter'])->name('newsletter');

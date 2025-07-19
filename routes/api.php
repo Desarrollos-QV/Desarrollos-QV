@@ -17,3 +17,16 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::group(array('namespace' => 'App\Http\Controllers\Api'), function () {
+
+
+    
+    /*________________________
+    |                         
+    |    WebHook ClipMX        
+    |_________________________
+    */
+    Route::post('webhookclipmx/{uuid}','ApiController@webhookclipmx');
+});

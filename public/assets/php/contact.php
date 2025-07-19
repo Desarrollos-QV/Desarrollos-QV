@@ -15,7 +15,7 @@ require 'PHPMailer/src/SMTP.php';
 // Recipients
 $fromEmail = 'no-reply@desarrollosqv.com'; // Email address that will be in the from field of the message.
 $fromName = 'DesarrollosQV'; // Name that will be in the from field of the message.
-$sendToEmail = $_POST['email']; // Email address that will receive the message with the output of the form
+$sendToEmail = 'no-reply@desarrollosqv.com'; //$_POST['email']; // Email address that will receive the message with the output of the form
 $sendToName = $_POST['name']; // Name that will receive the message with the output of the form
 
 // Subject
@@ -30,16 +30,16 @@ $errorMessage = 'Se produjo un error al enviar el formulario. Inténtelo de nuev
 
 // SMTP settings
 $smtpUse = false; // Set to true to enable SMTP authentication
-$smtpHost = 'smtp.hostinger.com'; // Enter SMTP host ie. smtp.gmail.com
-$smtpUsername = 'no-reply@desarrollosqv.com'; // SMTP username ie. gmail address
-$smtpPassword = 'fyAg4363FaRZ8R7$'; // SMTP password ie gmail password
-$smtpSecure = 'tls'; // Enable TLS or SSL encryption
+$smtpHost = 'smtp.gmail.com'; // Enter SMTP host ie. smtp.gmail.com
+$smtpUsername = 'soporte.desarrollosqv@gmail.com'; // 'no-reply@desarrollosqv.com'; // SMTP username ie. gmail address
+$smtpPassword = 'Princesa0824234xy.'; //'fyAg4363FaRZ8R7$'; // SMTP password ie gmail password
+$smtpSecure = PHPMailer::ENCRYPTION_STARTTLS; // 'SSL'; // Enable TLS or SSL encryption
 $smtpAutoTLS = false; // Enable Auto TLS
-$smtpPort = 465; // TCP port to connect to
+$smtpPort = 587; // TCP port to connect to
 
 // reCAPTCHA settings
-$recaptchaUse = true; // Set to true to enable reCAPTHCA
-$recaptchaSecret = '6LfubvsqAAAAAKxepRnO3w7T2EbRgRaHlwSFLSMa'; // enter your secret key from https://www.google.com/recaptcha/admin
+$recaptchaUse = false; // Set to true to enable reCAPTHCA
+$recaptchaSecret = '6LeXQv8qAAAAABnIJvglB7NxkgkpdOAkZjawqT13'; // enter your secret key from https://www.google.com/recaptcha/admin
 
 /*
 *  LET'S DO THE SENDING
@@ -98,10 +98,13 @@ try {
     $mail->Password = $smtpPassword;
   }
   if(!$mail->send()) {
-    throw new \Exception('I could not send the email.' . $mail->ErrorInfo);
+    $responseArray = array('type' => 'danger', 'message' => 'I could not send the email.' . $mail->ErrorInfo);
+    throw new \Exception('I could not send the email.' . $mail->ErrorInfo); 
   }
+
   $responseArray = array('type' => 'success', 'message' => $okMessage);
 }
+
 catch (\Exception $e) {
   $responseArray = array('type' => 'danger', 'message' => $e->getMessage());
 }

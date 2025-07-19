@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('assignments', function (Blueprint $table) {
+        Schema::create('newsletters', function (Blueprint $table) {
             $table->id();
-            $table->integer('vehicle_units_id');
-            $table->integer('truck_box_id');
-            $table->integer('gps_devices_id');
+            $table->string('email')->unique();
+            $table->integer('status')->default(0);
+            $table->string('verify_token', 64)->unique();
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('assignments');
+        Schema::dropIfExists('newsletters');
     }
 };

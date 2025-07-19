@@ -8,9 +8,9 @@
                     <p class="mb-4">© 2025 DesarrollosQV. <br class="d-none d-lg-block" />Todos los derechos
                         reservados.</p>
                     <nav class="nav social social-white">
-                        <a href="#"><i class="uil uil-facebook-f"></i></a>
-                        <a href="#"><i class="uil uil-twitter"></i></a>
-                        <a href="#"><i class="uil uil-instagram"></i></a>
+                        <a href="https://www.facebook.com/DesarrollosQV" target="_blank"><i class="uil uil-facebook-f"></i></a>
+                        <a href="https://x.com/DesarrollosQv" target="_blank"><i class="uil uil-twitter"></i></a>
+                        <a href="https://www.instagram.com/desarrollosqv/" target="_blank"><i class="uil uil-instagram"></i></a>
                     </nav>
                     <!-- /.social -->
                 </div>
@@ -50,12 +50,13 @@
                         <!-- Begin Mailchimp Signup Form -->
                         <div id="mc_embed_signup2">
                             <form
-                                action="https://elemisfreebies.us20.list-manage.com/subscribe/post?u=aa4947f70a475ce162057838d&amp;id=b49ef47a9a"
-                                method="post" id="mc-embedded-subscribe-form2" name="mc-embedded-subscribe-form"
-                                class="validate dark-fields" target="_blank" novalidate>
+                                action="{{ route('newsletter') }}"
+                                method="post" id="subscribe-newaletter" name="mc-embedded-subscribe-form"
+                                class="newsletter-form validate dark-fields needs-validation-news" target="_blank" novalidate>
+                                @CSRF
                                 <div id="mc_embed_signup_scroll2">
                                     <div class="mc-field-group input-group form-floating">
-                                        <input type="email" value="" name="EMAIL"
+                                        <input type="email" value="" name="email"
                                             class="required email form-control" placeholder="Email Address"
                                             id="mce-EMAIL2">
                                         <label for="mce-EMAIL2">Email Address</label>
@@ -88,3 +89,27 @@
     </div>
     <!-- /.container -->
 </footer>
+
+
+<div class="modal fade modal-newsletter" id="modal-newsletter" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered modal-md">
+    <div class="modal-content text-center">
+      <div class="modal-body">
+        <button class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="row">
+          <div class="col-md-10 offset-md-1">
+            <figure class="mb-6"><img src="{{ asset('assets/img/illustrations/i7.png') }}" srcset="{{ asset('assets/img/illustrations/i7@2x.png 2x') }}" alt="" /></figure>
+          </div>
+          <!-- /column -->
+        </div>
+        <!-- /.row -->
+        <h3>Gracias por unirte a nuestra lista de correos!</h3>
+        <p class="mb-6 message"></p>
+      </div>
+      <!--/.modal-body -->
+    </div>
+    <!--/.modal-content -->
+  </div>
+  <!--/.modal-dialog -->
+</div>
+<!--/.modal -->

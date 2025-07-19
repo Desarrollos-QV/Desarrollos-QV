@@ -214,7 +214,8 @@ return [
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
         'Html' => Spatie\Html\Facades\Html::class,
-        'Excel' => Maatwebsite\Excel\Facades\Excel::class
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Uuid' => Webpatser\Uuid\Uuid::class,
     ])->toArray(),
 
 ];

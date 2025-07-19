@@ -52,9 +52,14 @@
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/colors/default.css') }}">
 
-    
     @yield('css')
+ 
+    <!-- Google tag (gtag.js) --> 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-684811021"></script> 
+    <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-684811021'); </script>
 
+    <!-- Event snippet for Contacto conversion page --> 
+    <script> gtag('event', 'conversion', {'send_to': 'AW-684811021/jCYqCL-Ki_MaEI3GxcYC'}); </script>
 </head>
 
 <body>
@@ -80,7 +85,7 @@
     </div>
 
     <script src="{{ asset('assets/js/plugins.js') }}"></script>
-    <script src="{{ asset('assets/js/theme.js') }}"></script>
+    <script src="{{ asset('assets/js/theme.js?v=2.5.1') }}"></script>
 
     
     @yield('javascript')

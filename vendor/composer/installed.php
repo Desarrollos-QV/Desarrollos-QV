@@ -3,7 +3,7 @@
         'name' => 'dqv/proyect',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '3dedc6b16fe9e909515e4d3920530180dd5dbdd2',
+        'reference' => '981afc86b3300a7962c6b93a13e2061a9d48ebe3',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -88,7 +88,7 @@
         'dqv/proyect' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '3dedc6b16fe9e909515e4d3920530180dd5dbdd2',
+            'reference' => '981afc86b3300a7962c6b93a13e2061a9d48ebe3',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -859,8 +859,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '1.0|2.0|3.0',
-                1 => '1.0.0 || 2.0.0 || 3.0.0',
+                0 => '1.0.0 || 2.0.0 || 3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache' => array(
@@ -1442,6 +1442,15 @@
             'reference' => '11cb2199493b2f8a3b53e7f19068fc6aac760991',
             'type' => 'library',
             'install_path' => __DIR__ . '/../webmozart/assert',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
+        'webpatser/laravel-uuid' => array(
+            'pretty_version' => '4.0.2',
+            'version' => '4.0.2.0',
+            'reference' => 'f82715c6bc6a4fcc61bb020cb4fddeb8cc73bbea',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../webpatser/laravel-uuid',
             'aliases' => array(),
             'dev_requirement' => false,
         ),

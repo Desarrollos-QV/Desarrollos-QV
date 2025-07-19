@@ -31,6 +31,7 @@ var theme = {
     theme.bsModal();
     theme.iTooltip();
     theme.forms();
+    theme.Newsletter();
     theme.passVisibility();
     theme.pricingSwitcher();
     theme.textRotator();
@@ -727,12 +728,14 @@ var theme = {
         }
         var validation = Array.prototype.filter.call(forms, function(form) {
           form.addEventListener("submit", function(event) {
+            
             if(form.checkValidity() === false) {
               event.preventDefault();
               event.stopPropagation();
             }
+
             form.classList.add("was-validated");
-            if(form.checkValidity() === true) {
+            if(form.checkValidity() === true) { 
               event.preventDefault();
               form.classList.remove("was-validated");
               // Send message only if the form has class .contact-form
@@ -743,12 +746,12 @@ var theme = {
                 fetch("assets/php/contact.php", {
                   method: "post",
                   body: data
-                }).then((data) => {
+                }).then((data) => { 
                   if(data.ok) {
                     alertClass = 'alert-success';
                   }
                   return data.text();
-                }).then((txt) => {
+                }).then((txt) => { 
                   var alertBox = '<div class="alert ' + alertClass + ' alert-dismissible fade show"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' + txt + '</div>';
                   if(alertClass && txt) {
                     form.querySelector(".messages").insertAdjacentHTML('beforeend', alertBox);
@@ -759,6 +762,64 @@ var theme = {
                   console.log(err);
                 });
               }
+            }else {
+              console.log("Hubo un errro....", form.checkValidity())
+            }
+          }, false);
+        });
+      }, false);
+    })();
+  },
+  /**
+   * Newsletter
+   * Bootstrap validation - Only sends messages if form has class ".newsletter-form" and is validated and shows success/fail messages
+   */
+  Newsletter: () => {
+    (function() {
+      window.addEventListener('load', function() {
+        var forms = document.querySelectorAll(".needs-validation-news");
+        var validation = Array.prototype.filter.call(forms, function(form) {
+          form.addEventListener("submit", function(event) {
+            console.log("Submit Event......", form.checkValidity(), form.getAttribute('action'))
+            if(form.checkValidity() === false) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+
+            form.classList.add("was-validated");
+            if(form.checkValidity() === true) {
+              event.preventDefault();
+              form.classList.remove("was-validated");
+              // Send message only if the form has class .newsletter-form
+              var isContactForm = form.classList.contains('newsletter-form');
+              if(isContactForm) {
+                var data = new FormData(form);
+                var alertClass = 'alert-success';
+                fetch(form.getAttribute('action'), {
+                  method: "post",
+                  body: data
+                }).then((data) => {
+                  return data.json();
+                }).then((req) => {
+                  console.log(req);
+                  if (req.status === false) {
+                    alertClass = 'alert-danger';
+                  }
+
+                  var alertBox = '<div class="alert ' + alertClass + ' alert-dismissible fade show"><button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>' + req.data + '</div>';
+                  document.querySelector(".message").innerHTML  = alertBox;
+
+                  var ModalNewsletter = new bootstrap.Modal(document.querySelector('.modal-newsletter'));
+                  ModalNewsletter.show();
+                  setTimeout(function() {
+                    ModalNewsletter.hide();
+                  }, 5000);
+                }).catch((err) => {
+                  console.log(err);
+                });
+              }
+            }else {
+              console.log("Hubo un errro....", form.checkValidity())
             }
           }, false);
         });
